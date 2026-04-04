@@ -1,0 +1,20 @@
+{
+  "wo": "WO-HXQ-GGUF-CONVERT",
+  "model": "EchoLabs33/zamba2-1.2b-helix",
+  "output": "/tmp/zamba2-1.2b-hxq-dense-f32.gguf",
+  "mode": "dense",
+  "dtype": "f32",
+  "file_size_bytes": 4861007392,
+  "tensor_count": 406,
+  "hxq_modules": 136,
+  "non_hxq_tensors": 270,
+  "cost": {
+    "wall_time_s": 11.85,
+    "cpu_time_s": 11.765,
+    "peak_memory_mb": 5186.7,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-04-03T21:47:42",
+    "timestamp_end": "2026-04-03T21:47:54"
+  }
+}
