@@ -1,0 +1,4 @@
+lib/
+test/test_hxq
+*.o
+*.a
