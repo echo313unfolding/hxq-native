@@ -1,0 +1,1924 @@
+{
+  "wo": "WO-HXQ-NATIVE-VERIFY-ALL",
+  "model": "EchoLabs33/zamba2-1.2b-helix",
+  "total_modules": 136,
+  "passed": 136,
+  "failed": 0,
+  "total_weights": 1148452864,
+  "gate": "PASS",
+  "results": [
+    {
+      "name": "model.layers.0.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "1.105042",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.0.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.972053",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.1.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.549145",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.1.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.925837",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.2.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.694662",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.2.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.888393",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.3.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.699482",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.3.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.757188",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.4.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.582328",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.4.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "1.021291",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 4194304,
+      "max_error": "0.00000000",
+      "confidence": "0.601246",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.661428",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "1.099600",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.q_proj",
+      "shape": [
+        4096,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 16777216,
+      "max_error": "0.00000000",
+      "confidence": "0.558863",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.k_proj",
+      "shape": [
+        4096,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 16777216,
+      "max_error": "0.00000000",
+      "confidence": "0.435762",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.v_proj",
+      "shape": [
+        4096,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 16777216,
+      "max_error": "0.00000000",
+      "confidence": "0.414471",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.o_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "1.150693",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.0.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.226842",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.0.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.279390",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.1.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.191513",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.1.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.395190",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.2.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.195397",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.2.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.506342",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.3.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.178447",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.3.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.240857",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.4.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.338896",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.4.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.392621",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.5.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.419785",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.5.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.345227",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.0.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.325255",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.0.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.321346",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.1.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.184018",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.1.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.381749",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.2.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.234714",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.2.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.432409",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.3.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.410515",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.3.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.275047",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.4.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.639613",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.4.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.423083",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.5.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.609182",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.5.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.505311",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.0.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.282511",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.0.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.199803",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.1.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.209451",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.1.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.215574",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.2.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.184510",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.2.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.174914",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.3.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.459455",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.3.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.446800",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.4.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.833011",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.4.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.410823",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.5.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.839268",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.5.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 524288,
+      "max_error": "0.00000000",
+      "confidence": "0.275747",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj",
+      "shape": [
+        16384,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 33554432,
+      "max_error": "0.00000000",
+      "confidence": "0.574318",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.down_proj",
+      "shape": [
+        2048,
+        8192
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 16777216,
+      "max_error": "0.00000000",
+      "confidence": "0.361295",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.0.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 262144,
+      "max_error": "0.00000000",
+      "confidence": "0.314437",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.0.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 2097152,
+      "max_error": "0.00000000",
+      "confidence": "0.433093",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.1.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 262144,
+      "max_error": "0.00000000",
+      "confidence": "0.136377",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.1.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 2097152,
+      "max_error": "0.00000000",
+      "confidence": "0.411047",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.2.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 262144,
+      "max_error": "0.00000000",
+      "confidence": "0.225447",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.2.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 2097152,
+      "max_error": "0.00000000",
+      "confidence": "0.483947",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.3.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 262144,
+      "max_error": "0.00000000",
+      "confidence": "0.238018",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.3.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 2097152,
+      "max_error": "0.00000000",
+      "confidence": "0.523482",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.4.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 262144,
+      "max_error": "0.00000000",
+      "confidence": "0.249323",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.4.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 2097152,
+      "max_error": "0.00000000",
+      "confidence": "0.561706",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.5.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 262144,
+      "max_error": "0.00000000",
+      "confidence": "0.306054",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.5.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 2097152,
+      "max_error": "0.00000000",
+      "confidence": "0.597529",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.6.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.769201",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.6.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "1.226447",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.7.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.696322",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.7.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.777114",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.8.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.663947",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.8.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.793791",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.9.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.521510",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.9.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.673463",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.10.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.694933",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.10.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.858045",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.11.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 4194304,
+      "max_error": "0.00000000",
+      "confidence": "0.332405",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.11.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.719806",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.11.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.874507",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.12.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.746001",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.12.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.932387",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.13.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.794690",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.13.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.751615",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.14.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.731486",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.14.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.582918",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.15.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.686678",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.15.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.624821",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.16.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.788775",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.16.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.817006",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.17.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 4194304,
+      "max_error": "0.00000000",
+      "confidence": "0.285856",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.17.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.798527",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.17.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.972652",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.18.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.757839",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.18.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.740835",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.19.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.852712",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.19.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.614730",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.20.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.728075",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.20.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.672136",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.21.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.776604",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.21.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.728145",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.22.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.794773",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.22.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.674638",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.23.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 4194304,
+      "max_error": "0.00000000",
+      "confidence": "0.442896",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.23.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.891999",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.23.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "1.275000",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.24.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.651507",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.24.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.932445",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.25.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.601372",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.25.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.550803",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.26.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.648939",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.26.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.587616",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.27.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "1.089981",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.27.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.630152",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.28.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.790843",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.28.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.657099",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.29.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 4194304,
+      "max_error": "0.00000000",
+      "confidence": "0.513706",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.29.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.731173",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.29.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.913697",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.30.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.702399",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.30.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.442375",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.31.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.905267",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.31.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.563461",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.32.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.731465",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.32.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.482848",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.33.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "1.101635",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.33.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.545084",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.34.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "1.011474",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.34.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.702362",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.35.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 4194304,
+      "max_error": "0.00000000",
+      "confidence": "0.381243",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.35.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.838831",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.35.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.770874",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.36.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.681169",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.36.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "0.780823",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.37.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 17432576,
+      "max_error": "0.00000000",
+      "confidence": "0.596715",
+      "status": "PASS"
+    },
+    {
+      "name": "model.layers.37.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "k": 256,
+      "vdim": 1,
+      "sidecar_nnz": 256,
+      "n_weights": 8388608,
+      "max_error": "0.00000000",
+      "confidence": "1.147445",
+      "status": "PASS"
+    }
+  ],
+  "cost": {
+    "wall_time_s": 26.76,
+    "cpu_time_s": 19.034,
+    "peak_memory_mb": 2777.0,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-04-03T21:33:36",
+    "timestamp_end": "2026-04-03T21:34:03"
+  }
+}
