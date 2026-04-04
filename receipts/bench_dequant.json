@@ -1,0 +1,1652 @@
+{
+  "wo": "WO-HXQ-NATIVE-BENCH",
+  "model": "EchoLabs33/zamba2-1.2b-helix",
+  "total_modules": 136,
+  "c_median_us": 3633.68,
+  "py_median_us": 59572.44,
+  "median_speedup": 16.28,
+  "mean_speedup": 19.38,
+  "results": [
+    {
+      "name": "model.layers.0.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7541.06,
+      "py_us": 117112.45,
+      "speedup": 15.53,
+      "gweights_per_sec": 2.312
+    },
+    {
+      "name": "model.layers.0.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3587.19,
+      "py_us": 59301.74,
+      "speedup": 16.53,
+      "gweights_per_sec": 2.338
+    },
+    {
+      "name": "model.layers.1.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7689.45,
+      "py_us": 118617.96,
+      "speedup": 15.43,
+      "gweights_per_sec": 2.267
+    },
+    {
+      "name": "model.layers.1.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3662.68,
+      "py_us": 59044.75,
+      "speedup": 16.12,
+      "gweights_per_sec": 2.29
+    },
+    {
+      "name": "model.layers.2.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7840.09,
+      "py_us": 118449.86,
+      "speedup": 15.11,
+      "gweights_per_sec": 2.224
+    },
+    {
+      "name": "model.layers.2.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3636.31,
+      "py_us": 59292.23,
+      "speedup": 16.31,
+      "gweights_per_sec": 2.307
+    },
+    {
+      "name": "model.layers.3.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7843.8,
+      "py_us": 118872.45,
+      "speedup": 15.15,
+      "gweights_per_sec": 2.222
+    },
+    {
+      "name": "model.layers.3.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3685.11,
+      "py_us": 59750.67,
+      "speedup": 16.21,
+      "gweights_per_sec": 2.276
+    },
+    {
+      "name": "model.layers.4.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7710.24,
+      "py_us": 119331.14,
+      "speedup": 15.48,
+      "gweights_per_sec": 2.261
+    },
+    {
+      "name": "model.layers.4.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3693.84,
+      "py_us": 59488.69,
+      "speedup": 16.1,
+      "gweights_per_sec": 2.271
+    },
+    {
+      "name": "model.layers.5.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "n_weights": 4194304,
+      "c_us": 1784.44,
+      "py_us": 26898.28,
+      "speedup": 15.07,
+      "gweights_per_sec": 2.35
+    },
+    {
+      "name": "model.layers.5.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7940.76,
+      "py_us": 119022.17,
+      "speedup": 14.99,
+      "gweights_per_sec": 2.195
+    },
+    {
+      "name": "model.layers.5.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3885.94,
+      "py_us": 59935.48,
+      "speedup": 15.42,
+      "gweights_per_sec": 2.159
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.q_proj",
+      "shape": [
+        4096,
+        4096
+      ],
+      "n_weights": 16777216,
+      "c_us": 7290.82,
+      "py_us": 114449.08,
+      "speedup": 15.7,
+      "gweights_per_sec": 2.301
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.k_proj",
+      "shape": [
+        4096,
+        4096
+      ],
+      "n_weights": 16777216,
+      "c_us": 7437.54,
+      "py_us": 114971.87,
+      "speedup": 15.46,
+      "gweights_per_sec": 2.256
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.v_proj",
+      "shape": [
+        4096,
+        4096
+      ],
+      "n_weights": 16777216,
+      "c_us": 7964.16,
+      "py_us": 114736.78,
+      "speedup": 14.41,
+      "gweights_per_sec": 2.107
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.o_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3642.93,
+      "py_us": 59010.09,
+      "speedup": 16.2,
+      "gweights_per_sec": 2.303
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.0.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 233.25,
+      "py_us": 5685.98,
+      "speedup": 24.38,
+      "gweights_per_sec": 2.248
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.0.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 235.66,
+      "py_us": 5788.87,
+      "speedup": 24.56,
+      "gweights_per_sec": 2.225
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.1.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 215.11,
+      "py_us": 5712.08,
+      "speedup": 26.55,
+      "gweights_per_sec": 2.437
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.1.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 245.36,
+      "py_us": 5874.09,
+      "speedup": 23.94,
+      "gweights_per_sec": 2.137
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.2.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 217.16,
+      "py_us": 5686.05,
+      "speedup": 26.18,
+      "gweights_per_sec": 2.414
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.2.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 232.59,
+      "py_us": 5663.43,
+      "speedup": 24.35,
+      "gweights_per_sec": 2.254
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.3.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 209.86,
+      "py_us": 5760.6,
+      "speedup": 27.45,
+      "gweights_per_sec": 2.498
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.3.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 236.65,
+      "py_us": 5773.8,
+      "speedup": 24.4,
+      "gweights_per_sec": 2.215
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.4.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 215.02,
+      "py_us": 5762.7,
+      "speedup": 26.8,
+      "gweights_per_sec": 2.438
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.4.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 240.4,
+      "py_us": 5693.09,
+      "speedup": 23.68,
+      "gweights_per_sec": 2.181
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.5.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 208.83,
+      "py_us": 5889.74,
+      "speedup": 28.2,
+      "gweights_per_sec": 2.511
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_q_adapter_list.5.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 235.82,
+      "py_us": 5821.29,
+      "speedup": 24.69,
+      "gweights_per_sec": 2.223
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.0.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 219.56,
+      "py_us": 5910.43,
+      "speedup": 26.92,
+      "gweights_per_sec": 2.388
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.0.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 236.2,
+      "py_us": 5746.78,
+      "speedup": 24.33,
+      "gweights_per_sec": 2.22
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.1.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 213.74,
+      "py_us": 5824.64,
+      "speedup": 27.25,
+      "gweights_per_sec": 2.453
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.1.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 234.9,
+      "py_us": 5716.48,
+      "speedup": 24.34,
+      "gweights_per_sec": 2.232
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.2.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 211.59,
+      "py_us": 5770.73,
+      "speedup": 27.27,
+      "gweights_per_sec": 2.478
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.2.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 251.61,
+      "py_us": 5787.93,
+      "speedup": 23.0,
+      "gweights_per_sec": 2.084
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.3.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 207.51,
+      "py_us": 5838.79,
+      "speedup": 28.14,
+      "gweights_per_sec": 2.527
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.3.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 234.44,
+      "py_us": 5748.92,
+      "speedup": 24.52,
+      "gweights_per_sec": 2.236
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.4.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 233.09,
+      "py_us": 5824.26,
+      "speedup": 24.99,
+      "gweights_per_sec": 2.249
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.4.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 240.57,
+      "py_us": 5735.1,
+      "speedup": 23.84,
+      "gweights_per_sec": 2.179
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.5.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 215.73,
+      "py_us": 5910.28,
+      "speedup": 27.4,
+      "gweights_per_sec": 2.43
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_k_adapter_list.5.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 253.31,
+      "py_us": 5751.55,
+      "speedup": 22.71,
+      "gweights_per_sec": 2.07
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.0.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 213.63,
+      "py_us": 5812.74,
+      "speedup": 27.21,
+      "gweights_per_sec": 2.454
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.0.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 236.22,
+      "py_us": 5740.86,
+      "speedup": 24.3,
+      "gweights_per_sec": 2.219
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.1.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 246.01,
+      "py_us": 5797.02,
+      "speedup": 23.56,
+      "gweights_per_sec": 2.131
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.1.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 241.84,
+      "py_us": 5797.65,
+      "speedup": 23.97,
+      "gweights_per_sec": 2.168
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.2.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 213.57,
+      "py_us": 5752.68,
+      "speedup": 26.94,
+      "gweights_per_sec": 2.455
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.2.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 245.5,
+      "py_us": 5829.24,
+      "speedup": 23.74,
+      "gweights_per_sec": 2.136
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.3.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 258.42,
+      "py_us": 5789.82,
+      "speedup": 22.4,
+      "gweights_per_sec": 2.029
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.3.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 249.9,
+      "py_us": 5846.07,
+      "speedup": 23.39,
+      "gweights_per_sec": 2.098
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.4.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 213.5,
+      "py_us": 5757.22,
+      "speedup": 26.97,
+      "gweights_per_sec": 2.456
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.4.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 235.14,
+      "py_us": 5772.74,
+      "speedup": 24.55,
+      "gweights_per_sec": 2.23
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.5.0",
+      "shape": [
+        128,
+        4096
+      ],
+      "n_weights": 524288,
+      "c_us": 212.64,
+      "py_us": 5861.18,
+      "speedup": 27.56,
+      "gweights_per_sec": 2.466
+    },
+    {
+      "name": "model.layers.5.shared_transformer.self_attn.linear_v_adapter_list.5.1",
+      "shape": [
+        4096,
+        128
+      ],
+      "n_weights": 524288,
+      "c_us": 233.72,
+      "py_us": 5772.99,
+      "speedup": 24.7,
+      "gweights_per_sec": 2.243
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj",
+      "shape": [
+        16384,
+        2048
+      ],
+      "n_weights": 33554432,
+      "c_us": 14832.18,
+      "py_us": 224494.72,
+      "speedup": 15.14,
+      "gweights_per_sec": 2.262
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.down_proj",
+      "shape": [
+        2048,
+        8192
+      ],
+      "n_weights": 16777216,
+      "c_us": 7470.95,
+      "py_us": 114315.58,
+      "speedup": 15.3,
+      "gweights_per_sec": 2.246
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.0.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "n_weights": 262144,
+      "c_us": 113.44,
+      "py_us": 4847.57,
+      "speedup": 42.73,
+      "gweights_per_sec": 2.311
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.0.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "n_weights": 2097152,
+      "c_us": 984.44,
+      "py_us": 11764.58,
+      "speedup": 11.95,
+      "gweights_per_sec": 2.13
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.1.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "n_weights": 262144,
+      "c_us": 125.43,
+      "py_us": 4975.91,
+      "speedup": 39.67,
+      "gweights_per_sec": 2.09
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.1.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "n_weights": 2097152,
+      "c_us": 961.21,
+      "py_us": 11507.8,
+      "speedup": 11.97,
+      "gweights_per_sec": 2.182
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.2.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "n_weights": 262144,
+      "c_us": 104.23,
+      "py_us": 4887.5,
+      "speedup": 46.89,
+      "gweights_per_sec": 2.515
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.2.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "n_weights": 2097152,
+      "c_us": 962.25,
+      "py_us": 11546.04,
+      "speedup": 12.0,
+      "gweights_per_sec": 2.179
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.3.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "n_weights": 262144,
+      "c_us": 104.29,
+      "py_us": 4854.79,
+      "speedup": 46.55,
+      "gweights_per_sec": 2.514
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.3.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "n_weights": 2097152,
+      "c_us": 950.91,
+      "py_us": 11468.76,
+      "speedup": 12.06,
+      "gweights_per_sec": 2.205
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.4.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "n_weights": 262144,
+      "c_us": 121.62,
+      "py_us": 4832.22,
+      "speedup": 39.73,
+      "gweights_per_sec": 2.155
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.4.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "n_weights": 2097152,
+      "c_us": 950.19,
+      "py_us": 11447.47,
+      "speedup": 12.05,
+      "gweights_per_sec": 2.207
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.5.0",
+      "shape": [
+        128,
+        2048
+      ],
+      "n_weights": 262144,
+      "c_us": 104.3,
+      "py_us": 4933.52,
+      "speedup": 47.3,
+      "gweights_per_sec": 2.513
+    },
+    {
+      "name": "model.layers.5.shared_transformer.feed_forward.gate_up_proj_adapter_list.5.1",
+      "shape": [
+        16384,
+        128
+      ],
+      "n_weights": 2097152,
+      "c_us": 1065.43,
+      "py_us": 11705.32,
+      "speedup": 10.99,
+      "gweights_per_sec": 1.968
+    },
+    {
+      "name": "model.layers.6.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7642.34,
+      "py_us": 118442.52,
+      "speedup": 15.5,
+      "gweights_per_sec": 2.281
+    },
+    {
+      "name": "model.layers.6.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3626.3,
+      "py_us": 59236.64,
+      "speedup": 16.34,
+      "gweights_per_sec": 2.313
+    },
+    {
+      "name": "model.layers.7.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7793.06,
+      "py_us": 118714.82,
+      "speedup": 15.23,
+      "gweights_per_sec": 2.237
+    },
+    {
+      "name": "model.layers.7.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3753.84,
+      "py_us": 59385.35,
+      "speedup": 15.82,
+      "gweights_per_sec": 2.235
+    },
+    {
+      "name": "model.layers.8.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7624.91,
+      "py_us": 119305.18,
+      "speedup": 15.65,
+      "gweights_per_sec": 2.286
+    },
+    {
+      "name": "model.layers.8.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3661.39,
+      "py_us": 59614.37,
+      "speedup": 16.28,
+      "gweights_per_sec": 2.291
+    },
+    {
+      "name": "model.layers.9.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7823.53,
+      "py_us": 118771.92,
+      "speedup": 15.18,
+      "gweights_per_sec": 2.228
+    },
+    {
+      "name": "model.layers.9.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3658.05,
+      "py_us": 59545.37,
+      "speedup": 16.28,
+      "gweights_per_sec": 2.293
+    },
+    {
+      "name": "model.layers.10.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7732.8,
+      "py_us": 118954.15,
+      "speedup": 15.38,
+      "gweights_per_sec": 2.254
+    },
+    {
+      "name": "model.layers.10.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3602.65,
+      "py_us": 59586.8,
+      "speedup": 16.54,
+      "gweights_per_sec": 2.328
+    },
+    {
+      "name": "model.layers.11.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "n_weights": 4194304,
+      "c_us": 1771.02,
+      "py_us": 26810.18,
+      "speedup": 15.14,
+      "gweights_per_sec": 2.368
+    },
+    {
+      "name": "model.layers.11.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7928.54,
+      "py_us": 119100.4,
+      "speedup": 15.02,
+      "gweights_per_sec": 2.199
+    },
+    {
+      "name": "model.layers.11.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3677.1,
+      "py_us": 59908.0,
+      "speedup": 16.29,
+      "gweights_per_sec": 2.281
+    },
+    {
+      "name": "model.layers.12.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7693.7,
+      "py_us": 118466.66,
+      "speedup": 15.4,
+      "gweights_per_sec": 2.266
+    },
+    {
+      "name": "model.layers.12.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3612.56,
+      "py_us": 59375.26,
+      "speedup": 16.44,
+      "gweights_per_sec": 2.322
+    },
+    {
+      "name": "model.layers.13.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7705.79,
+      "py_us": 118259.98,
+      "speedup": 15.35,
+      "gweights_per_sec": 2.262
+    },
+    {
+      "name": "model.layers.13.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3623.15,
+      "py_us": 59909.89,
+      "speedup": 16.54,
+      "gweights_per_sec": 2.315
+    },
+    {
+      "name": "model.layers.14.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7661.32,
+      "py_us": 118738.3,
+      "speedup": 15.5,
+      "gweights_per_sec": 2.275
+    },
+    {
+      "name": "model.layers.14.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3563.99,
+      "py_us": 59540.12,
+      "speedup": 16.71,
+      "gweights_per_sec": 2.354
+    },
+    {
+      "name": "model.layers.15.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7578.07,
+      "py_us": 118885.87,
+      "speedup": 15.69,
+      "gweights_per_sec": 2.3
+    },
+    {
+      "name": "model.layers.15.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3602.21,
+      "py_us": 59376.48,
+      "speedup": 16.48,
+      "gweights_per_sec": 2.329
+    },
+    {
+      "name": "model.layers.16.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7550.49,
+      "py_us": 118671.35,
+      "speedup": 15.72,
+      "gweights_per_sec": 2.309
+    },
+    {
+      "name": "model.layers.16.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3674.11,
+      "py_us": 59392.58,
+      "speedup": 16.17,
+      "gweights_per_sec": 2.283
+    },
+    {
+      "name": "model.layers.17.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "n_weights": 4194304,
+      "c_us": 1824.7,
+      "py_us": 26808.79,
+      "speedup": 14.69,
+      "gweights_per_sec": 2.299
+    },
+    {
+      "name": "model.layers.17.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7569.76,
+      "py_us": 118439.61,
+      "speedup": 15.65,
+      "gweights_per_sec": 2.303
+    },
+    {
+      "name": "model.layers.17.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3661.26,
+      "py_us": 59507.27,
+      "speedup": 16.25,
+      "gweights_per_sec": 2.291
+    },
+    {
+      "name": "model.layers.18.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7886.73,
+      "py_us": 118944.37,
+      "speedup": 15.08,
+      "gweights_per_sec": 2.21
+    },
+    {
+      "name": "model.layers.18.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3591.17,
+      "py_us": 59688.19,
+      "speedup": 16.62,
+      "gweights_per_sec": 2.336
+    },
+    {
+      "name": "model.layers.19.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7529.01,
+      "py_us": 119021.12,
+      "speedup": 15.81,
+      "gweights_per_sec": 2.315
+    },
+    {
+      "name": "model.layers.19.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3579.45,
+      "py_us": 59656.61,
+      "speedup": 16.67,
+      "gweights_per_sec": 2.344
+    },
+    {
+      "name": "model.layers.20.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7789.84,
+      "py_us": 119309.73,
+      "speedup": 15.32,
+      "gweights_per_sec": 2.238
+    },
+    {
+      "name": "model.layers.20.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3644.35,
+      "py_us": 59736.53,
+      "speedup": 16.39,
+      "gweights_per_sec": 2.302
+    },
+    {
+      "name": "model.layers.21.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7586.76,
+      "py_us": 119171.15,
+      "speedup": 15.71,
+      "gweights_per_sec": 2.298
+    },
+    {
+      "name": "model.layers.21.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3651.34,
+      "py_us": 60028.41,
+      "speedup": 16.44,
+      "gweights_per_sec": 2.297
+    },
+    {
+      "name": "model.layers.22.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7589.79,
+      "py_us": 119565.63,
+      "speedup": 15.75,
+      "gweights_per_sec": 2.297
+    },
+    {
+      "name": "model.layers.22.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3617.3,
+      "py_us": 59710.25,
+      "speedup": 16.51,
+      "gweights_per_sec": 2.319
+    },
+    {
+      "name": "model.layers.23.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "n_weights": 4194304,
+      "c_us": 1841.39,
+      "py_us": 27039.43,
+      "speedup": 14.68,
+      "gweights_per_sec": 2.278
+    },
+    {
+      "name": "model.layers.23.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7499.44,
+      "py_us": 118982.33,
+      "speedup": 15.87,
+      "gweights_per_sec": 2.325
+    },
+    {
+      "name": "model.layers.23.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3679.59,
+      "py_us": 59756.25,
+      "speedup": 16.24,
+      "gweights_per_sec": 2.28
+    },
+    {
+      "name": "model.layers.24.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7558.53,
+      "py_us": 119018.81,
+      "speedup": 15.75,
+      "gweights_per_sec": 2.306
+    },
+    {
+      "name": "model.layers.24.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3682.92,
+      "py_us": 59635.19,
+      "speedup": 16.19,
+      "gweights_per_sec": 2.278
+    },
+    {
+      "name": "model.layers.25.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7639.69,
+      "py_us": 118798.55,
+      "speedup": 15.55,
+      "gweights_per_sec": 2.282
+    },
+    {
+      "name": "model.layers.25.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3556.61,
+      "py_us": 59558.09,
+      "speedup": 16.75,
+      "gweights_per_sec": 2.359
+    },
+    {
+      "name": "model.layers.26.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7515.24,
+      "py_us": 119360.56,
+      "speedup": 15.88,
+      "gweights_per_sec": 2.32
+    },
+    {
+      "name": "model.layers.26.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3712.03,
+      "py_us": 59766.65,
+      "speedup": 16.1,
+      "gweights_per_sec": 2.26
+    },
+    {
+      "name": "model.layers.27.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7848.76,
+      "py_us": 119300.77,
+      "speedup": 15.2,
+      "gweights_per_sec": 2.221
+    },
+    {
+      "name": "model.layers.27.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3654.67,
+      "py_us": 59943.26,
+      "speedup": 16.4,
+      "gweights_per_sec": 2.295
+    },
+    {
+      "name": "model.layers.28.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7549.79,
+      "py_us": 119286.6,
+      "speedup": 15.8,
+      "gweights_per_sec": 2.309
+    },
+    {
+      "name": "model.layers.28.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3638.09,
+      "py_us": 59762.76,
+      "speedup": 16.43,
+      "gweights_per_sec": 2.306
+    },
+    {
+      "name": "model.layers.29.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "n_weights": 4194304,
+      "c_us": 1783.83,
+      "py_us": 26863.6,
+      "speedup": 15.06,
+      "gweights_per_sec": 2.351
+    },
+    {
+      "name": "model.layers.29.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7548.4,
+      "py_us": 119170.63,
+      "speedup": 15.79,
+      "gweights_per_sec": 2.309
+    },
+    {
+      "name": "model.layers.29.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3585.19,
+      "py_us": 60087.84,
+      "speedup": 16.76,
+      "gweights_per_sec": 2.34
+    },
+    {
+      "name": "model.layers.30.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7653.85,
+      "py_us": 119768.17,
+      "speedup": 15.65,
+      "gweights_per_sec": 2.278
+    },
+    {
+      "name": "model.layers.30.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3647.18,
+      "py_us": 59727.49,
+      "speedup": 16.38,
+      "gweights_per_sec": 2.3
+    },
+    {
+      "name": "model.layers.31.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7661.58,
+      "py_us": 119426.32,
+      "speedup": 15.59,
+      "gweights_per_sec": 2.275
+    },
+    {
+      "name": "model.layers.31.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3658.65,
+      "py_us": 60016.01,
+      "speedup": 16.4,
+      "gweights_per_sec": 2.293
+    },
+    {
+      "name": "model.layers.32.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7599.49,
+      "py_us": 119205.87,
+      "speedup": 15.69,
+      "gweights_per_sec": 2.294
+    },
+    {
+      "name": "model.layers.32.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3730.41,
+      "py_us": 59978.12,
+      "speedup": 16.08,
+      "gweights_per_sec": 2.249
+    },
+    {
+      "name": "model.layers.33.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7744.34,
+      "py_us": 119429.51,
+      "speedup": 15.42,
+      "gweights_per_sec": 2.251
+    },
+    {
+      "name": "model.layers.33.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3631.04,
+      "py_us": 59824.18,
+      "speedup": 16.48,
+      "gweights_per_sec": 2.31
+    },
+    {
+      "name": "model.layers.34.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7531.03,
+      "py_us": 119289.14,
+      "speedup": 15.84,
+      "gweights_per_sec": 2.315
+    },
+    {
+      "name": "model.layers.34.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3656.49,
+      "py_us": 59978.65,
+      "speedup": 16.4,
+      "gweights_per_sec": 2.294
+    },
+    {
+      "name": "model.layers.35.linear",
+      "shape": [
+        2048,
+        2048
+      ],
+      "n_weights": 4194304,
+      "c_us": 1775.49,
+      "py_us": 26990.15,
+      "speedup": 15.2,
+      "gweights_per_sec": 2.362
+    },
+    {
+      "name": "model.layers.35.mamba_decoder.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7630.85,
+      "py_us": 119755.27,
+      "speedup": 15.69,
+      "gweights_per_sec": 2.284
+    },
+    {
+      "name": "model.layers.35.mamba_decoder.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3598.4,
+      "py_us": 59969.99,
+      "speedup": 16.67,
+      "gweights_per_sec": 2.331
+    },
+    {
+      "name": "model.layers.36.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 7534.15,
+      "py_us": 119694.11,
+      "speedup": 15.89,
+      "gweights_per_sec": 2.314
+    },
+    {
+      "name": "model.layers.36.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3655.78,
+      "py_us": 59997.02,
+      "speedup": 16.41,
+      "gweights_per_sec": 2.295
+    },
+    {
+      "name": "model.layers.37.mamba.in_proj",
+      "shape": [
+        8512,
+        2048
+      ],
+      "n_weights": 17432576,
+      "c_us": 8415.05,
+      "py_us": 120092.59,
+      "speedup": 14.27,
+      "gweights_per_sec": 2.072
+    },
+    {
+      "name": "model.layers.37.mamba.out_proj",
+      "shape": [
+        2048,
+        4096
+      ],
+      "n_weights": 8388608,
+      "c_us": 3655.05,
+      "py_us": 60238.25,
+      "speedup": 16.48,
+      "gweights_per_sec": 2.295
+    }
+  ],
+  "cost": {
+    "wall_time_s": 119.642,
+    "cpu_time_s": 109.021,
+    "peak_memory_mb": 2865.9,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-04-03T21:35:48",
+    "timestamp_end": "2026-04-03T21:37:48"
+  }
+}
