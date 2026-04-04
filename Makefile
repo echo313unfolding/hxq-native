@@ -21,7 +21,7 @@ LIB      = lib/libhxq.a
 TEST_BIN = test/test_hxq
 CUDA_OBJ = lib/hxq_cuda.o
 
-.PHONY: all test cuda clean
+.PHONY: all test cuda verify clean
 
 all: $(LIB) $(TEST_BIN)
 
@@ -39,6 +39,11 @@ $(LIB): lib/hxq.o
 $(TEST_BIN): $(TEST_SRC) $(LIB)
 	$(CC) $(CFLAGS) $< -Llib -lhxq $(LDFLAGS) -o $@
 
+# Verification against Python reference
+VERIFY_BIN = test/verify_against_python
+$(VERIFY_BIN): test/verify_against_python.c $(LIB)
+	$(CC) $(CFLAGS) $< -Llib -lhxq $(LDFLAGS) -o $@
+
 # CUDA kernel (optional)
 cuda: $(CUDA_OBJ)
 
@@ -51,6 +56,13 @@ test: $(TEST_BIN)
 	@echo "Running HXQ native tests..."
 	@echo ""
 	@./$(TEST_BIN)
+
+# Verify against Python-exported tensor
+verify: $(VERIFY_BIN)
+	@echo ""
+	@echo "Run export_tensor.py on GPU box first, then:"
+	@echo "  ./test/verify_against_python test_meta.json"
+	@echo ""
 
 clean:
 	rm -f lib/*.o lib/*.a $(TEST_BIN)

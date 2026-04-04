@@ -2,3 +2,9 @@ lib/
 test/test_hxq
 *.o
 *.a
+test_codebook.bin
+test_indices.bin
+test_sc_*.bin
+test_reference.bin
+test_meta.json
+test/verify_against_python
