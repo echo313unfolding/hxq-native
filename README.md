@@ -96,4 +96,4 @@ This is the native companion to the Python `helix-substrate` package (PyPI). Sam
 
 ## License
 
-Apache 2.0
+MIT
