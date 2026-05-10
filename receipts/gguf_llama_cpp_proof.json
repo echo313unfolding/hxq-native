@@ -1,0 +1,39 @@
+{
+  "wo": "WO-HXQ-GGUF-LLAMA-CPP",
+  "gate": "PASS",
+  "model": "EchoLabs33/tinyllama-1.1b-helix",
+  "source": "/home/voidstr3m33/models/tinyllama-1.1b-helix",
+  "results": {
+    "f32_gguf": {
+      "size_mb": 4400.9,
+      "tensors": 201,
+      "hxq_modules_dequantized": 155,
+      "non_hxq_tensors": 46,
+      "duplicates_skipped": 44,
+      "cpu_tok_s": 8.07
+    },
+    "q8_0_gguf": {
+      "size_mb": 1114.91,
+      "gpu_tok_s": 76.08,
+      "gpu_prompt_tok_s": 304.69,
+      "vram_mb": 1203
+    },
+    "greedy_match": "F32 == Q8_0 (identical greedy output)",
+    "tokenizer": "SentencePiece (32000 tokens, proper scores)",
+    "architecture": "llama -> LLM_ARCH_LLAMA (1:1 mapping)",
+    "output_sample": "The capital of France is Paris. It is an international city..."
+  },
+  "bugs_fixed": [
+    "sidecar REPLACE (sidecar_values are targets, not deltas)",
+    "SentencePiece tokenizer (scores from tokenizer.model, not zeros)",
+    "duplicate layernorm dedup (input.layernorm vs input_layernorm)"
+  ],
+  "converter": "tools/convert_hxq_to_gguf.py",
+  "llama_cpp": "/home/voidstr3m33/llama.cpp (commit a3cb047)",
+  "cost": {
+    "wall_time_s": 12.5,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp": "2026-04-03T22:23:39"
+  }
+}

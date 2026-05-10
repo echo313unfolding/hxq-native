@@ -26,6 +26,154 @@ import torch
 from safetensors import safe_open
 from gguf import GGUFWriter, GGMLQuantizationType
 
+GGML_MAX_NAME = 64  # llama.cpp's tensor name limit
+
+
+def shorten_tensor_name(name: str) -> str:
+    """Shorten tensor names to fit within GGML_MAX_NAME (64 chars).
+
+    llama.cpp has a 64-char limit on tensor names. Zamba2's HuggingFace names
+    can be 80+ chars (shared_transformer adapter lists). We abbreviate
+    systematically while keeping names unique and reversible.
+    """
+    if len(name) < GGML_MAX_NAME:
+        return name
+
+    # Abbreviation map — applied in order
+    abbrevs = [
+        ("shared_transformer.", "st."),
+        ("self_attn.", "attn."),
+        ("feed_forward.", "ff."),
+        ("gate_up_proj_adapter_list", "gup_ada"),
+        ("gate_up_proj", "gup"),
+        ("linear_q_adapter_list", "q_ada"),
+        ("linear_k_adapter_list", "k_ada"),
+        ("linear_v_adapter_list", "v_ada"),
+        ("mamba_decoder.", "md."),
+        ("input_layernorm", "inp_ln"),
+        ("embed_tokens", "embd"),
+        ("final_layernorm", "final_ln"),
+        ("sidecar_positions", "sc_pos"),
+        ("sidecar_values", "sc_val"),
+    ]
+
+    result = name
+    for long, short in abbrevs:
+        if len(result) < GGML_MAX_NAME:
+            break
+        result = result.replace(long, short)
+
+    if len(result) >= GGML_MAX_NAME:
+        # Last resort: truncate with hash suffix for uniqueness
+        import hashlib
+        h = hashlib.md5(name.encode()).hexdigest()[:6]
+        result = result[:GGML_MAX_NAME - 8] + "." + h
+
+    return result
+
+
+def map_tensor_name_to_gguf(name: str, config: dict) -> str:
+    """Map HuggingFace tensor names to llama.cpp GGUF naming convention.
+
+    Architecture-aware: dispatches based on model_type from config.
+    Returns None for tensors that should be skipped (duplicates).
+    """
+    import re
+
+    arch = config.get("model_type", "llama")
+
+    # Global tensors (shared across architectures)
+    global_map = {
+        "model.embed_tokens.weight": "token_embd.weight",
+        "model.norm.weight": "output_norm.weight",           # LLaMA/Qwen
+        "model.final_layernorm.weight": "output_norm.weight", # Zamba2/Mamba
+        "lm_head.weight": "output.weight",
+    }
+    if name in global_map:
+        return global_map[name]
+
+    # Layer-level: model.layers.{i}.{rest}
+    m = re.match(r"model\.layers\.(\d+)\.(.*)", name)
+    if not m:
+        return shorten_tensor_name(name)
+
+    layer_idx = m.group(1)
+    rest = m.group(2)
+    prefix = f"blk.{layer_idx}"
+
+    # ── LLaMA / Qwen (standard transformer) ──────────────────────
+    if arch in ("llama", "qwen2"):
+        llama_map = {
+            # Norms
+            "input_layernorm.weight":          f"{prefix}.attn_norm.weight",
+            "post_attention_layernorm.weight":  f"{prefix}.ffn_norm.weight",
+            # Attention weights
+            "self_attn.q_proj.weight":  f"{prefix}.attn_q.weight",
+            "self_attn.k_proj.weight":  f"{prefix}.attn_k.weight",
+            "self_attn.v_proj.weight":  f"{prefix}.attn_v.weight",
+            "self_attn.o_proj.weight":  f"{prefix}.attn_output.weight",
+            # Attention biases (Qwen2)
+            "self_attn.q_proj.bias":  f"{prefix}.attn_q.bias",
+            "self_attn.k_proj.bias":  f"{prefix}.attn_k.bias",
+            "self_attn.v_proj.bias":  f"{prefix}.attn_v.bias",
+            # MLP
+            "mlp.gate_proj.weight":  f"{prefix}.ffn_gate.weight",
+            "mlp.up_proj.weight":    f"{prefix}.ffn_up.weight",
+            "mlp.down_proj.weight":  f"{prefix}.ffn_down.weight",
+        }
+        if rest in llama_map:
+            return llama_map[rest]
+
+        # Skip duplicate dot-separated layernorm names from HXQ safetensors
+        if rest in ("input.layernorm.weight", "post.attention.layernorm.weight"):
+            return None  # Signal to skip this tensor
+
+        return shorten_tensor_name(name)
+
+    # ── Mamba / Zamba2 (SSM + hybrid) ─────────────────────────────
+    mamba_map = {
+        "mamba.in_proj.weight":   f"{prefix}.ssm_in.weight",
+        "mamba.out_proj.weight":  f"{prefix}.ssm_out.weight",
+        "mamba.conv1d.weight":    f"{prefix}.ssm_conv1d.weight",
+        "mamba.conv1d.bias":      f"{prefix}.ssm_conv1d.bias",
+        "mamba.dt_bias":          f"{prefix}.ssm_dt.bias",
+        "mamba.A_log":            f"{prefix}.ssm_a",
+        "mamba.D":                f"{prefix}.ssm_d",
+        "mamba.norm.weight":      f"{prefix}.ssm_norm.weight",
+        "input_layernorm.weight": f"{prefix}.attn_norm.weight",
+    }
+
+    mamba_decoder_map = {
+        "mamba_decoder.mamba.in_proj.weight":   f"{prefix}.ssm_in.weight",
+        "mamba_decoder.mamba.out_proj.weight":  f"{prefix}.ssm_out.weight",
+        "mamba_decoder.mamba.conv1d.weight":    f"{prefix}.ssm_conv1d.weight",
+        "mamba_decoder.mamba.conv1d.bias":      f"{prefix}.ssm_conv1d.bias",
+        "mamba_decoder.mamba.dt_bias":          f"{prefix}.ssm_dt.bias",
+        "mamba_decoder.mamba.A_log":            f"{prefix}.ssm_a",
+        "mamba_decoder.mamba.D":                f"{prefix}.ssm_d",
+        "mamba_decoder.mamba.norm.weight":      f"{prefix}.ssm_norm.weight",
+        "mamba_decoder.input_layernorm.weight": f"{prefix}.attn_norm.weight",
+    }
+
+    attn_map = {
+        "shared_transformer.self_attn.q_proj.weight": f"{prefix}.attn_q.weight",
+        "shared_transformer.self_attn.k_proj.weight": f"{prefix}.attn_k.weight",
+        "shared_transformer.self_attn.v_proj.weight": f"{prefix}.attn_v.weight",
+        "shared_transformer.self_attn.o_proj.weight": f"{prefix}.attn_output.weight",
+    }
+
+    ffn_map = {
+        "shared_transformer.feed_forward.gate_up_proj.weight": f"{prefix}.ffn_gate.weight",
+        "shared_transformer.feed_forward.down_proj.weight":    f"{prefix}.ffn_down.weight",
+    }
+
+    for src, dst in {**mamba_map, **mamba_decoder_map, **attn_map, **ffn_map}.items():
+        if rest == src:
+            return dst
+
+    # Fallback: shorten the name
+    return shorten_tensor_name(name)
+
 
 def find_safetensors(model_id: str) -> list:
     """Find safetensors files from HF cache or local path."""
@@ -118,7 +266,12 @@ def identify_hxq_modules(tensor_names: list) -> dict:
 
 
 def dequant_hxq_tensor(codebook, indices, sidecar_pos, sidecar_vals, out_f, in_f):
-    """Dequantize one HXQ tensor to dense F32."""
+    """Dequantize one HXQ tensor to dense F32.
+
+    Sidecar values are TARGET values (not deltas) — they REPLACE the VQ value
+    at each position. HelixLinear internally stores deltas = values - vq_at_pos,
+    but the safetensors stores the raw target values.
+    """
     cb = codebook.float()
     idx = indices.long()
 
@@ -131,56 +284,154 @@ def dequant_hxq_tensor(codebook, indices, sidecar_pos, sidecar_vals, out_f, in_f
 
     W = W.reshape(out_f, in_f)
 
-    # Apply sidecar
+    # Apply sidecar — REPLACE, not add (sidecar_vals are target values)
     if sidecar_pos is not None and len(sidecar_pos) > 0:
         for i in range(len(sidecar_pos)):
             pos = int(sidecar_pos[i])
             row = pos // in_f
             col = pos % in_f
-            W[row, col] += sidecar_vals[i]
+            W[row, col] = sidecar_vals[i]
 
     return W
 
 
+def find_tokenizer_model(model_id: str) -> str | None:
+    """Find tokenizer.model (SentencePiece) file."""
+    if os.path.isdir(model_id):
+        path = os.path.join(model_id, "tokenizer.model")
+    else:
+        cache_base = os.path.expanduser("~/.cache/huggingface/hub")
+        safe_name = model_id.replace("/", "--")
+        model_dir = os.path.join(cache_base, f"models--{safe_name}")
+        files = glob.glob(os.path.join(model_dir, "**/tokenizer.model"), recursive=True)
+        path = files[0] if files else None
+
+    if path and os.path.isfile(path):
+        return path
+    return None
+
+
 def add_tokenizer(writer: GGUFWriter, model_id: str, config: dict):
-    """Add tokenizer data to GGUF."""
-    tok_json = load_tokenizer_json(model_id)
-    if not tok_json:
-        print("  WARNING: No tokenizer.json found, skipping tokenizer")
-        return
+    """Add tokenizer data to GGUF.
 
-    # Extract token list from tokenizer.json
-    model_data = tok_json.get("model", {})
-    vocab = model_data.get("vocab", {})
+    Prefers tokenizer.model (SentencePiece) for proper scores and types.
+    Falls back to tokenizer.json vocab with zero scores.
+    """
+    sp_path = find_tokenizer_model(model_id)
 
-    if vocab:
-        # Sort by token ID
-        tokens = [""] * len(vocab)
-        scores = [0.0] * len(vocab)
-        token_types = [0] * len(vocab)  # 0=normal
+    if sp_path:
+        # Use SentencePiece model — has real scores and types
+        import sentencepiece as spm
+        sp = spm.SentencePieceProcessor()
+        sp.Load(sp_path)
 
-        for token_str, token_id in vocab.items():
-            if token_id < len(tokens):
-                tokens[token_id] = token_str
-                # SentencePiece scores aren't in tokenizer.json directly
-                # Use 0.0 as default
+        n_vocab = sp.get_piece_size()
+        tokens = []
+        scores = []
+        token_types = []
 
-        writer.add_tokenizer_model("llama")  # SentencePiece/BPE
+        # GGUF token type enum: NORMAL=1, UNKNOWN=2, CONTROL=3, USER_DEFINED=4, UNUSED=5, BYTE=6
+        for i in range(n_vocab):
+            tokens.append(sp.id_to_piece(i))
+            scores.append(sp.get_score(i))
+
+            if sp.is_unknown(i):
+                token_types.append(2)
+            elif sp.is_control(i):
+                token_types.append(3)
+            elif sp.is_byte(i):
+                token_types.append(6)
+            else:
+                token_types.append(1)  # NORMAL
+
+        writer.add_tokenizer_model("llama")  # SentencePiece
         writer.add_token_list(tokens)
         writer.add_token_scores(scores)
         writer.add_token_types(token_types)
 
-    bos = config.get("bos_token_id", 1)
+        print(f"  Tokenizer: {n_vocab} tokens from tokenizer.model (SentencePiece)")
+
+    else:
+        # Fallback to tokenizer.json (BPE tokenizers like Qwen2)
+        tok_json = load_tokenizer_json(model_id)
+        if not tok_json:
+            print("  WARNING: No tokenizer found, skipping")
+            return
+
+        model_data = tok_json.get("model", {})
+        vocab = model_data.get("vocab", {})
+        merges = model_data.get("merges", [])
+        added_tokens = tok_json.get("added_tokens", [])
+        tok_type = model_data.get("type", "BPE")
+
+        if vocab:
+            # Determine total vocab size (must match embedding dimension)
+            vocab_size = config.get("vocab_size", len(vocab) + len(added_tokens))
+
+            tokens = [""] * vocab_size
+            scores = [0.0] * vocab_size
+            token_types = [1] * vocab_size  # NORMAL
+
+            # Fill base vocab
+            for token_str, token_id in vocab.items():
+                if token_id < vocab_size:
+                    tokens[token_id] = token_str
+
+            # Fill added tokens
+            for at in added_tokens:
+                tid = at["id"]
+                if tid < vocab_size:
+                    tokens[tid] = at["content"]
+                    if at.get("special", False):
+                        token_types[tid] = 3  # CONTROL
+
+            # Padding tokens (beyond added tokens, up to vocab_size)
+            max_filled = max(
+                max((v for v in vocab.values()), default=0),
+                max((at["id"] for at in added_tokens), default=0)
+            ) + 1
+            for i in range(max_filled, vocab_size):
+                tokens[i] = f"<|unused{i}|>"
+                token_types[i] = 5  # UNUSED
+
+            # Determine tokenizer model type
+            if tok_type == "BPE":
+                writer.add_tokenizer_model("gpt2")
+                if merges:
+                    writer.add_token_merges(merges)
+                print(f"  Tokenizer: {vocab_size} tokens (BPE, {len(merges)} merges, "
+                      f"{len(added_tokens)} added)")
+            else:
+                writer.add_tokenizer_model("llama")
+                print(f"  Tokenizer: {vocab_size} tokens from tokenizer.json")
+
+            writer.add_token_list(tokens)
+            writer.add_token_scores(scores)
+            writer.add_token_types(token_types)
+
+    bos = config.get("bos_token_id")
     eos = config.get("eos_token_id", 2)
     pad = config.get("pad_token_id", 0)
-    writer.add_bos_token_id(bos)
+    if bos is not None:
+        writer.add_bos_token_id(bos)
     writer.add_eos_token_id(eos)
-    writer.add_pad_token_id(pad)
+    if pad is not None:
+        writer.add_pad_token_id(pad)
 
-    print(f"  Tokenizer: {len(vocab)} tokens, BOS={bos}, EOS={eos}")
+    # add_bos_token flag (Qwen2 sets this to false)
+    tok_cfg_path = None
+    if os.path.isdir(model_id):
+        tok_cfg_path = os.path.join(model_id, "tokenizer_config.json")
+    if tok_cfg_path and os.path.isfile(tok_cfg_path):
+        with open(tok_cfg_path) as f:
+            tok_cfg = json.load(f)
+        if not tok_cfg.get("add_bos_token", True):
+            writer.add_add_bos_token(False)
+
+    print(f"  BOS={bos}, EOS={eos}")
 
 
-def convert(model_id: str, output_path: str, mode: str, dtype: str):
+def convert(model_id: str, output_path: str, mode: str, dtype: str, polarquant_seed: int = None):
     """Main conversion."""
     t_start = time.time()
     cpu_start = time.process_time()
@@ -267,8 +518,13 @@ def convert(model_id: str, output_path: str, mode: str, dtype: str):
         writer.add_uint32(f"{gguf_arch}.ssm.inner_size", d_inner)
         writer.add_uint32(f"{gguf_arch}.ssm.time_step_rank", dt_rank)
 
-    if n_heads != n_kv_heads:
-        writer.add_uint32(f"{gguf_arch}.attention.head_count", n_heads)
+    # RMS norm epsilon — required by llama.cpp for all arch types
+    rms_eps = config.get("rms_norm_eps", 1e-5)
+    writer.add_float32(f"{gguf_arch}.attention.layer_norm_rms_epsilon", rms_eps)
+
+    # Attention head counts
+    writer.add_uint32(f"{gguf_arch}.attention.head_count", n_heads)
+    if n_kv_heads != n_heads:
         writer.add_uint32(f"{gguf_arch}.attention.head_count_kv", n_kv_heads)
 
     # HXQ-specific metadata
@@ -277,6 +533,12 @@ def convert(model_id: str, output_path: str, mode: str, dtype: str):
     writer.add_uint32("hxq.n_clusters", 256)
     writer.add_uint32("hxq.vector_dim", 1)
     writer.add_uint32("hxq.module_count", len(hxq_modules))
+
+    # PolarQuant KV cache rotation metadata
+    if polarquant_seed is not None:
+        writer.add_bool(f"{gguf_arch}.polarquant.enabled", True)
+        writer.add_uint32(f"{gguf_arch}.polarquant.base_seed", polarquant_seed)
+        print(f"  PolarQuant KV rotation: enabled (seed={polarquant_seed})")
 
     # Tokenizer
     add_tokenizer(writer, model_id, config)
@@ -294,17 +556,24 @@ def convert(model_id: str, output_path: str, mode: str, dtype: str):
     total_bytes = 0
 
     # Write non-HXQ tensors (as-is, converted to target dtype)
+    skipped = 0
     for name in sorted(non_hxq_names):
+        gguf_name = map_tensor_name_to_gguf(name, config) if mode == "dense" else shorten_tensor_name(name)
+        if gguf_name is None:
+            skipped += 1
+            continue  # Skip duplicate tensors
+
         sf_path = all_tensors[name]
         with safe_open(sf_path, framework="pt") as sf:
             t = sf.get_tensor(name).cpu()
 
         arr = t.numpy().astype(np_dtype)
-        writer.add_tensor(name, arr, raw_dtype=ggml_dtype)
+        writer.add_tensor(gguf_name, arr, raw_dtype=ggml_dtype)
         tensor_count += 1
         total_bytes += arr.nbytes
 
-    print(f"  Non-HXQ: {len(non_hxq_names)} tensors ({total_bytes / 1e6:.1f} MB)")
+    print(f"  Non-HXQ: {len(non_hxq_names) - skipped} tensors ({total_bytes / 1e6:.1f} MB)"
+          + (f" ({skipped} duplicates skipped)" if skipped else ""))
 
     # Write HXQ tensors
     hxq_bytes = 0
@@ -332,7 +601,8 @@ def convert(model_id: str, output_path: str, mode: str, dtype: str):
             W = dequant_hxq_tensor(codebook, indices, sc_pos, sc_vals, out_f, in_f)
             arr = W.numpy().astype(np_dtype)
             # Store as the original weight name (without .codebook/.indices)
-            writer.add_tensor(prefix + ".weight", arr, raw_dtype=ggml_dtype)
+            gguf_name = map_tensor_name_to_gguf(prefix + ".weight", config)
+            writer.add_tensor(gguf_name, arr, raw_dtype=ggml_dtype)
             tensor_count += 1
             total_bytes += arr.nbytes
             hxq_bytes += arr.nbytes
@@ -342,22 +612,22 @@ def convert(model_id: str, output_path: str, mode: str, dtype: str):
             # Store codebook, indices, sidecar as separate GGUF tensors
             # Codebook: float32 [k] or [k, vdim]
             cb_arr = codebook.float().numpy()
-            writer.add_tensor(mod_info["codebook"], cb_arr,
+            writer.add_tensor(shorten_tensor_name(mod_info["codebook"]), cb_arr,
                               raw_dtype=GGMLQuantizationType.F32)
 
             # Indices: uint8 [out_f, in_f] — store as I8 (closest GGML type)
             idx_arr = indices.numpy().astype(np.int8)  # GGML I8 is signed
-            writer.add_tensor(mod_info["indices"], idx_arr,
+            writer.add_tensor(shorten_tensor_name(mod_info["indices"]), idx_arr,
                               raw_dtype=GGMLQuantizationType.I8)
 
             # Sidecar positions: int64
             if sc_pos is not None and len(sc_pos) > 0:
                 sc_pos_arr = sc_pos.numpy().astype(np.int64)
-                writer.add_tensor(mod_info["sidecar_positions"], sc_pos_arr,
+                writer.add_tensor(shorten_tensor_name(mod_info["sidecar_positions"]), sc_pos_arr,
                                   raw_dtype=GGMLQuantizationType.I64)
 
                 sc_vals_arr = sc_vals.float().numpy()
-                writer.add_tensor(mod_info["sidecar_values"], sc_vals_arr,
+                writer.add_tensor(shorten_tensor_name(mod_info["sidecar_values"]), sc_vals_arr,
                                   raw_dtype=GGMLQuantizationType.F32)
 
                 tensor_count += 4
@@ -431,13 +701,15 @@ def main():
                         help="compressed=keep HXQ format, dense=dequantize to F32/F16")
     parser.add_argument("--dtype", choices=["f32", "f16"], default="f32",
                         help="Output dtype for dense tensors (default: f32)")
+    parser.add_argument("--polarquant-seed", type=int, default=None,
+                        help="Enable PolarQuant KV cache rotation with given base seed")
     args = parser.parse_args()
 
     if args.output is None:
         basename = args.model_id.replace("/", "-").replace("--", "-")
         args.output = f"{basename}-{args.mode}.gguf"
 
-    convert(args.model_id, args.output, args.mode, args.dtype)
+    convert(args.model_id, args.output, args.mode, args.dtype, args.polarquant_seed)
 
 
 if __name__ == "__main__":

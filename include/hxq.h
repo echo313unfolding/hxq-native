@@ -57,6 +57,7 @@ typedef enum {
     HXQ_SCALAR_VQ,    /* k=256, uint8 indices, 1 weight per entry         */
     HXQ_VQ2D_8BIT,    /* k=4096, uint8 pair (two 8-bit indices)           */
     HXQ_VQ2D_12BIT,   /* k=4096, 12-bit packed indices (3 bytes per pair) */
+    HXQ_AFFINE_G128,  /* Per-group affine: uint8 idx + scale/offset, G=128 */
 } hxq_mode_t;
 
 /* ── Tensor descriptor ───────────────────────────────────────── */
@@ -83,6 +84,11 @@ typedef struct {
 
     /* Codec mode */
     hxq_mode_t   mode;
+
+    /* Affine group quantization fields (used when mode == HXQ_AFFINE_G128) */
+    float       *affine_scales;   /* [out_f, n_groups] float32             */
+    float       *affine_offsets;  /* [out_f, n_groups] float32             */
+    uint32_t     affine_group_size; /* Group size (128 for v4)             */
 
     /* Runtime: sidecar L2 norm per decompress call (confidence signal) */
     float        sidecar_l2_norm;
@@ -146,6 +152,28 @@ hxq_error_t hxq_tensor_load_indices_12bit(
     size_t         len,
     uint32_t       out_f,
     uint32_t       in_f
+);
+
+/**
+ * Load affine group quantization parameters.
+ * Sets mode to HXQ_AFFINE_G128 and stores indices/scales/offsets.
+ *
+ * @param t          Tensor descriptor
+ * @param indices    uint8 array [out_f * in_f]
+ * @param scales     float32 array [out_f * n_groups]
+ * @param offsets    float32 array [out_f * n_groups]
+ * @param out_f      Output features
+ * @param in_f       Input features
+ * @param group_size Group size (must divide in_f evenly)
+ */
+hxq_error_t hxq_tensor_load_affine(
+    hxq_tensor_t  *t,
+    const uint8_t *indices,
+    const float   *scales,
+    const float   *offsets,
+    uint32_t       out_f,
+    uint32_t       in_f,
+    uint32_t       group_size
 );
 
 /**

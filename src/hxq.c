@@ -29,6 +29,8 @@ void hxq_tensor_free(hxq_tensor_t *t) {
     free(t->sidecar_rows);
     free(t->sidecar_cols);
     free(t->sidecar_vals);
+    free(t->affine_scales);
+    free(t->affine_offsets);
     memset(t, 0, sizeof(hxq_tensor_t));
 }
 
@@ -165,6 +167,52 @@ hxq_error_t hxq_tensor_load_sidecar(
     return HXQ_OK;
 }
 
+/* ── Affine group quantization loading ────────────────────────── */
+
+hxq_error_t hxq_tensor_load_affine(
+    hxq_tensor_t  *t,
+    const uint8_t *indices,
+    const float   *scales,
+    const float   *offsets,
+    uint32_t       out_f,
+    uint32_t       in_f,
+    uint32_t       group_size
+) {
+    if (!t || !indices || !scales || !offsets) return HXQ_ERR_NULL_PTR;
+    if (group_size == 0 || in_f % group_size != 0) return HXQ_ERR_INVALID_DIM;
+
+    uint32_t n_groups = in_f / group_size;
+    size_t idx_n = (size_t)out_f * in_f;
+    size_t sg_n  = (size_t)out_f * n_groups;
+
+    uint8_t *idx_buf = (uint8_t *)malloc(idx_n);
+    float   *s_buf   = (float *)malloc(sg_n * sizeof(float));
+    float   *o_buf   = (float *)malloc(sg_n * sizeof(float));
+    if (!idx_buf || !s_buf || !o_buf) {
+        free(idx_buf); free(s_buf); free(o_buf);
+        return HXQ_ERR_ALLOC_FAILED;
+    }
+
+    memcpy(idx_buf, indices, idx_n);
+    memcpy(s_buf, scales, sg_n * sizeof(float));
+    memcpy(o_buf, offsets, sg_n * sizeof(float));
+
+    free(t->indices_raw);
+    free(t->affine_scales);
+    free(t->affine_offsets);
+
+    t->indices_raw      = idx_buf;
+    t->indices_len      = idx_n;
+    t->affine_scales    = s_buf;
+    t->affine_offsets   = o_buf;
+    t->out_features     = out_f;
+    t->in_features      = in_f;
+    t->affine_group_size = group_size;
+    t->mode             = HXQ_AFFINE_G128;
+
+    return HXQ_OK;
+}
+
 /* ── Decompress: scalar VQ (k=256, uint8 indices) ────────────── */
 
 static hxq_error_t decompress_scalar(
@@ -249,6 +297,34 @@ static hxq_error_t decompress_vq2d_12bit(
     return HXQ_OK;
 }
 
+/* ── Decompress: affine group quantization ────────────────────── */
+
+static hxq_error_t decompress_affine(
+    const hxq_tensor_t *t,
+    float              *output
+) {
+    const uint32_t out_f = t->out_features;
+    const uint32_t in_f  = t->in_features;
+    const uint32_t gs    = t->affine_group_size;
+    const uint32_t n_groups = in_f / gs;
+    const uint8_t *idx   = t->indices_raw;
+    const float   *sc    = t->affine_scales;
+    const float   *off   = t->affine_offsets;
+
+    for (uint32_t o = 0; o < out_f; o++) {
+        for (uint32_t g = 0; g < n_groups; g++) {
+            float s = sc[o * n_groups + g];
+            float f = off[o * n_groups + g];
+            for (uint32_t k = 0; k < gs; k++) {
+                uint32_t i = g * gs + k;
+                output[o * in_f + i] = (float)idx[o * in_f + i] * s + f;
+            }
+        }
+    }
+
+    return HXQ_OK;
+}
+
 /* ── Apply sidecar corrections + compute L2 norm ─────────────── */
 
 static void apply_sidecar(
@@ -280,17 +356,22 @@ hxq_error_t hxq_tensor_decompress(
     float        *output
 ) {
     if (!t || !output) return HXQ_ERR_NULL_PTR;
-    if (!t->codebook || !t->indices_raw) return HXQ_ERR_NULL_PTR;
+    if (!t->indices_raw) return HXQ_ERR_NULL_PTR;
+    /* Codebook required for VQ modes, not for affine */
+    if (t->mode != HXQ_AFFINE_G128 && !t->codebook) return HXQ_ERR_NULL_PTR;
 
     hxq_error_t err;
 
-    /* Phase 1: Codebook reconstruction */
+    /* Phase 1: Weight reconstruction */
     switch (t->mode) {
         case HXQ_SCALAR_VQ:
             err = decompress_scalar(t, output);
             break;
         case HXQ_VQ2D_12BIT:
             err = decompress_vq2d_12bit(t, output);
+            break;
+        case HXQ_AFFINE_G128:
+            err = decompress_affine(t, output);
             break;
         default:
             return HXQ_ERR_INVALID_DIM;

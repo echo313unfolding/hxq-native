@@ -1,0 +1,74 @@
+{
+  "test": "verify_polarquant_c_vs_python",
+  "verdict": "PASS",
+  "dim": 128,
+  "n_seeds": 6,
+  "n_pass": 6,
+  "tolerance": 0.0001,
+  "results": [
+    {
+      "seed": 42,
+      "status": "PASS",
+      "max_abs_diff": 1.385807991027832e-06,
+      "mean_abs_diff": 6.338769509284248e-08,
+      "cosine_similarity": 1.0000001192092896,
+      "orthogonality_error_python": 3.5762786865234375e-07,
+      "orthogonality_error_c": 1.0728836059570312e-06
+    },
+    {
+      "seed": 99,
+      "status": "PASS",
+      "max_abs_diff": 7.82310962677002e-07,
+      "mean_abs_diff": 5.8726815410636846e-08,
+      "cosine_similarity": 1.0000001192092896,
+      "orthogonality_error_python": 4.76837158203125e-07,
+      "orthogonality_error_c": 9.5367431640625e-07
+    },
+    {
+      "seed": 0,
+      "status": "PASS",
+      "max_abs_diff": 1.519918441772461e-06,
+      "mean_abs_diff": 6.652385309280362e-08,
+      "cosine_similarity": 1.0000001192092896,
+      "orthogonality_error_python": 4.172325134277344e-07,
+      "orthogonality_error_c": 7.748603820800781e-07
+    },
+    {
+      "seed": 7,
+      "status": "PASS",
+      "max_abs_diff": 2.6971101760864258e-06,
+      "mean_abs_diff": 6.787873729763305e-08,
+      "cosine_similarity": 0.9999998807907104,
+      "orthogonality_error_python": 3.5762786865234375e-07,
+      "orthogonality_error_c": 1.1324882507324219e-06
+    },
+    {
+      "seed": 256,
+      "status": "PASS",
+      "max_abs_diff": 1.9222497940063477e-06,
+      "mean_abs_diff": 6.818884656922819e-08,
+      "cosine_similarity": 1.0000001192092896,
+      "orthogonality_error_python": 5.364418029785156e-07,
+      "orthogonality_error_c": 7.748603820800781e-07
+    },
+    {
+      "seed": 1000,
+      "status": "PASS",
+      "max_abs_diff": 1.5944242477416992e-06,
+      "mean_abs_diff": 6.110212780185975e-08,
+      "cosine_similarity": 1.0,
+      "orthogonality_error_python": 3.5762786865234375e-07,
+      "orthogonality_error_c": 7.152557373046875e-07
+    }
+  ],
+  "cost": {
+    "wall_time_s": 0.043,
+    "cpu_time_s": 0.018,
+    "peak_memory_mb": 34.3,
+    "python_version": "3.10.12",
+    "numpy_version": "2.2.6",
+    "hostname": "Echo",
+    "timestamp_start": "2026-04-04T03:26:22",
+    "timestamp_end": "2026-04-04T03:26:22"
+  }
+}

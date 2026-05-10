@@ -1,20 +1,20 @@
 {
   "wo": "WO-HXQ-GGUF-CONVERT",
-  "model": "EchoLabs33/zamba2-1.2b-helix",
-  "output": "/tmp/zamba2-1.2b-hxq-dense-f32.gguf",
+  "model": "/home/voidstr3m33/models/qwen2.5-coder-3b-helix",
+  "output": "/tmp/qwen2.5-coder-3b-hxq-dense-f16.gguf",
   "mode": "dense",
-  "dtype": "f32",
-  "file_size_bytes": 4861007392,
-  "tensor_count": 406,
-  "hxq_modules": 136,
-  "non_hxq_tensors": 270,
+  "dtype": "f16",
+  "file_size_bytes": 6178439904,
+  "tensor_count": 434,
+  "hxq_modules": 252,
+  "non_hxq_tensors": 182,
   "cost": {
-    "wall_time_s": 11.85,
-    "cpu_time_s": 11.765,
-    "peak_memory_mb": 5186.7,
+    "wall_time_s": 165.534,
+    "cpu_time_s": 47.568,
+    "peak_memory_mb": 6739.2,
     "python_version": "3.10.12",
     "hostname": "Echo",
-    "timestamp_start": "2026-04-03T21:47:42",
-    "timestamp_end": "2026-04-03T21:47:54"
+    "timestamp_start": "2026-04-03T22:40:01",
+    "timestamp_end": "2026-04-03T22:42:46"
   }
 }
